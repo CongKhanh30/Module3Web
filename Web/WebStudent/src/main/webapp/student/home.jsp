@@ -1,11 +1,5 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: ADMIN
-  Date: 26/07/2023
-  Time: 4:06 CH
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -16,6 +10,9 @@
     <title>Home</title>
 </head>
 <body>
-
+<a href="">Thêm mới sinh viên</a>
+<c:forEach items="${students}" var="student">
+    <h1>${student.id},${student.age},${student.name}</h1>
+</c:forEach>
 </body>
 </html>
