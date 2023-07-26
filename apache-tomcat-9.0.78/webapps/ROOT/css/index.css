@@ -1,0 +1,15 @@
+a > img {
+    border-radius: 5px;
+}
+
+nav {
+    background-color: #272882;
+}
+
+.head-table {
+    background-color: #34359a;
+    color: #ebedef;
+}
+span {
+    color: red;
+}
