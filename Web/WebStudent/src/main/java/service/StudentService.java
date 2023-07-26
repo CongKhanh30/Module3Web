@@ -9,8 +9,8 @@ import java.util.List;
 public class StudentService implements IStudentService<Student> {
     private List<Student> students = new ArrayList<>();
     public StudentService(){
-        this.students.add(new Student(1, 23, "Nguyen D Van Quang", "https://yt3.googleusercontent.com/ytc/AOPolaQgeDJBNpe-3bMTtkIHz4NQjCViJZZixCdaWEBf=s900-c-k-c0x00ffffff-no-rj"));
-        this.students.add(new Student(2, 23, "Huynh Rau Den", "https://i.ex-cdn.com/mgn.vn/files/news/2022/04/01/one-piece-trai-ac-quy-cua-rau-den-cung-la-zoan-than-thoai-164530.jpg" ));
+        this.students.add(new Student(1, 23, "Nguyễn D Văn Quang", "https://yt3.googleusercontent.com/ytc/AOPolaQgeDJBNpe-3bMTtkIHz4NQjCViJZZixCdaWEBf=s900-c-k-c0x00ffffff-no-rj"));
+        this.students.add(new Student(2, 23, "Huỳnh D Teach", "https://i.ex-cdn.com/mgn.vn/files/news/2022/04/01/one-piece-trai-ac-quy-cua-rau-den-cung-la-zoan-than-thoai-164530.jpg" ));
     }
     @Override
     public void add(Student student) {
@@ -42,5 +42,16 @@ public class StudentService implements IStudentService<Student> {
     public void edit(int id, Student student) {
         int index = this.findById(id);
         this.students.set(index, student);
+    }
+
+    @Override
+    public List<Student> findByName(String name) {
+        List<Student> list = new ArrayList<>();
+        for (Student student : students) {
+            if (student.getName().toLowerCase().contains(name.toLowerCase())) {
+                list.add(student);
+            }
+        }
+        return list;
     }
 }

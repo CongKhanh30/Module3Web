@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -7,19 +7,26 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home</title>
-    <link rel="stylesheet" href="../css/student.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../css/student.css">
+    <title>Search</title>
 </head>
 <body>
+<form action="http://localhost:8080/student?action=search" method="post">
+    <label>
+        <input type="text" name="name" placeholder="Name">
+    </label>
+    <button>SEARCH</button>
+</form>
+<br>
 <table>
     <tr>
         <th>Id</th>
         <th>Name</th>
         <th>Age</th>
         <th>Image</th>
-        <th colspan="2">Action</th>
+        <th colspan="2">Options</th>
     </tr>
-    <c:forEach items="${students}" var="student">
+    <c:forEach items="${list}" var="student">
         <tr>
             <td>${student.id}</td>
             <td>${student.name}</td>
@@ -34,7 +41,5 @@
 </table>
 <br>
 <a href="http://localhost:8080/students?action=create">Add Student</a>
-<br>
-<a href="http://localhost:8080/students?action=search">Search Student</a>
 </body>
 </html>

@@ -8,4 +8,5 @@ public interface IStudentService<E> {
     void delete(int id);
     List<E> findAll();
     void edit(int id, E e);
+    List<E> findByName(String name);
 }
