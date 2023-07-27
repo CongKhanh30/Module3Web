@@ -36,5 +36,6 @@
 <a href="http://localhost:8080/students?action=create">Add Student</a>
 <br>
 <a href="http://localhost:8080/students?action=search">Search Student</a>
+<a href="http://localhost:8080/user?action=logout">Log out</a>
 </body>
 </html>
