@@ -1,5 +1,6 @@
 package controller;
 
+import filter.SessionUser;
 import model.Student;
 import service.StudentService;
 
@@ -12,28 +13,36 @@ import java.util.List;
 @WebServlet(name = "StudentController", value = "/students")
 public class StudentController extends HttpServlet {
     private StudentService studentService = new StudentService();
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter("action");
-        switch (action){
-            case "findAll":
-                showAll(request, response);
-                break;
-            case "create":
-                showFormAdd(request, response);
-                break;
-            case "delete":
-                delete(request, response);
-                break;
-            case "edit":
-                showEdit(request, response);
-                break;
-            case "search":
-                showSearch(request, response);
-                break;
+        boolean check = SessionUser.checkUser(request);
+        if (check) {
+            String action = request.getParameter("action");
+            switch (action) {
+                case "findAll":
+                    showAll(request, response);
+                    break;
+                case "create":
+                    showFormAdd(request, response);
+                    break;
+                case "delete":
+                    delete(request, response);
+                    break;
+                case "edit":
+                    showEdit(request, response);
+                    break;
+                case "search":
+                    showSearch(request, response);
+                    break;
+            }
+
+        } else {
+            response.sendRedirect("/user?action=login");
         }
 
     }
+
 
     public void showAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Student> students = studentService.findAll();
